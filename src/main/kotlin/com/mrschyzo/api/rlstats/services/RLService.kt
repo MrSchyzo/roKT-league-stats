@@ -1,4 +1,4 @@
-package com.mrschyzo.api.rlstats
+package com.mrschyzo.api.rlstats.services
 
 import com.mrschyzo.api.rlstats.models.*
 import retrofit2.Call
