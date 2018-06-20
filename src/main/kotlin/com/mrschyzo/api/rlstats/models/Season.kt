@@ -11,7 +11,7 @@ import java.util.*
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class Season(
         @JsonProperty("seasonId")
-        val seasonId: Int,
+        override val id: Int,
 
         @JsonProperty("startedOn")
         @JsonSerialize(using = DateToEpochSerializer::class, `as`=Long::class)
@@ -22,4 +22,4 @@ data class Season(
         @JsonSerialize(using = DateToEpochSerializer::class, `as`=Long::class)
         @JsonDeserialize(using = EpochToDateSerializer::class, `as`= Date::class)
         val endedOn: Date?
-)
+) : WithId<Int>

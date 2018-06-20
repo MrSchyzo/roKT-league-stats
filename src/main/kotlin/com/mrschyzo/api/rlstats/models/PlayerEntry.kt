@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class PlayerEntry(
         @JsonProperty("platformId")
-        val platformId: Int,
+        override val id: Int,
 
         @JsonProperty("uniqueId")
-        val uniqueId: String
-)
+        override val name: String
+) : WithInfoPair<Int>

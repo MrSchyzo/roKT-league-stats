@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class Tier(
         @JsonProperty("tierId")
-        val tierId: Int,
+        override val id: Int,
 
         @JsonProperty("tierName")
-        val tierName: String
-)
+        override val name: String
+) : WithInfoPair<Int>

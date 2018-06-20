@@ -4,7 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class Platform(
         @JsonProperty("id")
-        val id: Int,
+        override val id: Int,
+
         @JsonProperty("name")
-        val name: String
-)
+        override val name: String
+) : WithInfoPair<Int>

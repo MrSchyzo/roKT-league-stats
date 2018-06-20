@@ -11,10 +11,10 @@ import java.util.*
 @JsonInclude(JsonInclude.Include.NON_NULL)
 data class Player(
         @JsonProperty("uniqueId")
-        val uniqueId: String,
+        override val id: String,
 
         @JsonProperty("displayName")
-        val displayName: String,
+        override val name: String,
 
         @JsonProperty("platform")
         val platform: Platform,
@@ -29,7 +29,8 @@ data class Player(
         val signatureUrl: String?,
 
         @JsonProperty("stats")
-        val stats: Map<Stat, Int>,
+        val stats: PlayerStats,
+//        val stats: Map<Stat, Int>,
 
         @JsonProperty("lastRequested")
         @JsonSerialize(using = DateToEpochSerializer::class, `as` = Long::class)
@@ -53,4 +54,4 @@ data class Player(
 
         @JsonProperty("rankedSeasons")
         val rankedSeasons: Map<Int, Map<Int, RankingInfo>>
-)
+) : WithInfoPair<String>

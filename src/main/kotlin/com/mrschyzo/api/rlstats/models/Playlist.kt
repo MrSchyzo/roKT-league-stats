@@ -4,14 +4,16 @@ import com.fasterxml.jackson.annotation.JsonProperty
 
 data class Playlist(
         @JsonProperty("id")
-        val id: Int,
+        override val id: Int,
 
         @JsonProperty("platformId")
         val platformId: Int,
 
         @JsonProperty("name")
-        val name: String,
+        override val name: String,
 
         @JsonProperty("population")
         val population: Population
-)
+) : WithInfoPair<Int>
+
+fun Playlist.isRanked() = name.startsWith("Ranked")
