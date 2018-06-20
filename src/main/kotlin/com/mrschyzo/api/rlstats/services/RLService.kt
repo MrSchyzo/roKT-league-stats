@@ -9,16 +9,16 @@ import retrofit2.http.Query
 
 interface RLService {
     @GET("v1/data/platforms")
-    fun getPlatforms() : Call<List<Platform>>
+    fun getPlatforms() : Call<Collection<Platform>>
 
     @GET("v1/data/seasons")
-    fun getSeasons() : Call<List<Season>>
+    fun getSeasons() : Call<Collection<Season>>
 
     @GET("v1/data/playlists")
-    fun getPlaylists() : Call<List<Playlist>>
+    fun getPlaylists() : Call<Collection<Playlist>>
 
     @GET("v1/data/tiers")
-    fun getTiers() : Call<List<Tier>>
+    fun getTiers() : Call<Collection<Tier>>
 
     @GET("v1/player?")
     fun getPlayer(
@@ -31,8 +31,8 @@ interface RLService {
     @POST("v1/player/batch")
     fun getPlayers(
             @Body
-            players: List<PlayerEntry>
-    ) : Call<List<Player>>
+            players: Collection<PlayerEntry>
+    ) : Call<Collection<Player>>
 
     @GET("v1/search/players?")
     fun searchPlayersByDisplayName(
@@ -46,11 +46,11 @@ interface RLService {
     fun getLeaderboardByRankedPlaylistId(
             @Query("playlist_id")
             playlistId: Int
-    ): Call<List<Player>>
+    ): Call<Collection<Player>>
 
     @GET("v1/leaderboard/stat")
     fun getLeaderboardByStatType(
             @Query("type")
             statType: Stat
-    ): Call<List<Player>>
+    ): Call<Collection<Player>>
 }
