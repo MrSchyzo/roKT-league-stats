@@ -4,8 +4,8 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.+"
-        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.1.0'
+        classpath "com.fasterxml.jackson.module:jackson-module-kotlin:2.+"
+        classpath 'org.junit.platform:junit-platform-gradle-plugin:1.+'
     }
 }
 
@@ -20,8 +20,8 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    compile 'com.squareup.retrofit2:retrofit:2.4.0'
-    compile 'com.squareup.retrofit2:converter-jackson:2.4.0'
+    compile 'com.squareup.retrofit2:retrofit:2.+'
+    compile 'com.squareup.retrofit2:converter-jackson:2.+'
 }
 
 apply plugin: 'org.junit.platform.gradle.plugin'
