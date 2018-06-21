@@ -7,7 +7,7 @@ class ApiRLStatsProvider (
         private val service: RLService
 ) : RLStatsProvider {
     override fun getPlayers(playersEntries: Collection<PlayerEntry>): Collection<Player> =
-            service.getPlayers(playersEntries).getResponseOrException("Getting players")
+            playersEntries.chunked(10).flatMap { service.getPlayers(it).getResponseOrException("Getting players") }
 
     override fun getLeaderboardBy(playlist: Playlist): Collection<Player> {
         if (!playlist.isRanked())
