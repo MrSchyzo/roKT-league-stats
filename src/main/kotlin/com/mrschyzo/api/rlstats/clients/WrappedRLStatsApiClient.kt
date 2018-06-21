@@ -55,4 +55,6 @@ class WrappedRLStatsApiClient(
     override fun findPlayers(displayName: String, criteria: (Player) -> Boolean): Collection<Player> =
             statsClient.findPlayers(displayName, criteria)
 
+
+    override fun reloadData() = statsClient.reloadData()
 }
