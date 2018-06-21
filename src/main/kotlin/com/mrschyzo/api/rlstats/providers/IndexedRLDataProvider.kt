@@ -7,14 +7,18 @@ import retrofit2.Call
 class IndexedRLDataProvider(
         private val service: RLService
 ) : RLDataProvider {
-    private val platforms: Map<Int, Platform> = loadPlatforms()
 
-    private val playlists: Map<Int, Playlist> = loadPlaylists()
+    private lateinit var platforms: Map<Int, Platform>
 
-    private val tiers: Map<Int, Tier> = loadTiers()
+    private lateinit var playlists: Map<Int, Playlist>
 
-    private val seasons: Map<Int, Season> = loadSeasons()
+    private lateinit var tiers: Map<Int, Tier>
 
+    private lateinit var seasons: Map<Int, Season>
+
+    init {
+        reloadData()
+    }
 
     private fun loadPlatforms(): Map<Int, Platform> = loadFromCall(service.getPlatforms(), "Getting platforms")
 
@@ -58,4 +62,12 @@ class IndexedRLDataProvider(
 
     private fun <T: WithName> searchEntities(entities: Map<Int, T>, partialName: String) : Collection<T> =
         entities.values.filter { it -> it.name.contains(partialName, true) }
+
+
+    override fun reloadData() {
+        platforms = loadPlatforms()
+        playlists = loadPlaylists()
+        tiers = loadTiers()
+        seasons = loadSeasons()
+    }
 }

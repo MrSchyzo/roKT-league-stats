@@ -29,4 +29,7 @@ interface RLDataProvider {
     fun searchPlaylists(partialName: String): Collection<Playlist>
 
     fun searchTiers(partialName: String): Collection<Tier>
+
+
+    fun reloadData()
 }
