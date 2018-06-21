@@ -95,15 +95,21 @@ val provider: RLStatsProvider = ApiRLStatsProvider(service)
 ###### Use that instance to find player stats information provided by RLStats REST API
 ```Kotlin
 val players: Collection<Player> = provider.findPlayers("PartialName") //Retrieves ALL the players with display name containing "PartialName"
+
 val firstFortyPlayers: Collection<Player> = provider.findPlayers("PartialName", 40) //Retrieves first 40 players with display name containing "PartialName"
+
 val narrowedPlayers: Collection<Player> = provider.findPlayers("PartialName") {
     it.platform.name.contains("Steam") && it.stats.goals > 15000
 } //Retrieves all players with display name containing "PartialName", platform named "*Steam*" and scored more than 15k goals
+
 val player: Player? = getPlayer("id", Platform(1, "Steam")) //Finds the player that matches the given <id, platform>
+
 val playerz: Collection<Player> = getPlayers(listOf(
     PlayerEntry("id", Platform(1, "Steam")),
     PlayerEntry("id2", Platform(2, "PS4"))
 )) //Like getPlayer, but for a collection of pairs <id, platform>
+
 val leaders: Collection<Player> = getLeaderboardBy(playlist) //Returns first 100 players of the given playlist
+
 val leaderStats: Collection<Player> = getLeaderboardBy(stat) //Returns first 100 players by the given stat
 ```
