@@ -39,8 +39,15 @@ class ApiRLStatsProvider (
         return result.data.plus(otherData)
     }
 
-    override fun getPlayer(playerId: String, platform: Platform): Player =
-            service.getPlayer(playerId, platform.id).getResponseOrException("Getting player $playerId for platform ${platform.name}")
+    override fun getPlayer(playerId: String, platform: Platform): Player? {
+        try {
+            return service.getPlayer(playerId, platform.id).getResponseOrException("Getting player $playerId for platform ${platform.name}")
+        } catch (ex: ResponseFailedException) {
+            if (ex.rawResponse.code() != 404)
+                throw ex
+        }
+        return null
+    }
 
     private fun limitResult(resultsLimit: Int, actualResults: Int) =
             if (resultsLimit !in 0..actualResults) actualResults else resultsLimit

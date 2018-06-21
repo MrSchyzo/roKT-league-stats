@@ -34,7 +34,7 @@ class WrappedRLStatsApiClient(
             statsClient.searchTiers(partialName)
 
 
-    override fun getPlayer(playerId: String, platform: Platform): Player =
+    override fun getPlayer(playerId: String, platform: Platform): Player? =
             statsClient.getPlayer(playerId, platform)
 
     override fun getPlayers(playersEntries: Collection<PlayerEntry>): Collection<Player> =

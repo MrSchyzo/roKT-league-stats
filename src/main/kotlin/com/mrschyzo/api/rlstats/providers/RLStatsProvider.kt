@@ -3,7 +3,7 @@ package com.mrschyzo.api.rlstats.providers
 import com.mrschyzo.api.rlstats.models.*
 
 interface RLStatsProvider {
-    fun getPlayer(playerId: String, platform: Platform): Player
+    fun getPlayer(playerId: String, platform: Platform): Player?
 
     fun getPlayers(playersEntries: Collection<PlayerEntry>): Collection<Player>
 
