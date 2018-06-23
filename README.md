@@ -1,4 +1,4 @@
-# rocket-league-stats: A Kotlin wrapper for RLStats public API
+# roKT-league-stats: A Kotlin wrapper for RLStats public API
 
 ### Usage examples
 ##### Simplest usage: finding Kuxir97's stats, the real one.
