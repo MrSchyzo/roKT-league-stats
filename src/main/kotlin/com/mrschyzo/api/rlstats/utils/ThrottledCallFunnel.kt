@@ -6,7 +6,7 @@ import java.util.concurrent.Delayed
 import java.util.concurrent.TimeUnit
 
 class ThrottledCallFunnel(private val interval: TimeSpan, calls: Long = 1) : CallFunnel {
-    private val timestampQueue: DelayQueue<ThrottleToken> = DelayQueue(calls.generate { ThrottleToken(0, interval.unit) })
+    private val timestampQueue: DelayQueue<ThrottleToken> = DelayQueue(calls.create { ThrottleToken(0, interval.unit) })
 
     override fun <T> run(block: () -> T): T {
         try {
